@@ -1,0 +1,4 @@
+project=contributors
+architecture=container
+test=rspec
+template=slim
