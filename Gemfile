@@ -20,6 +20,7 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'rspec-hanami'
   gem 'capybara'
 end
 
