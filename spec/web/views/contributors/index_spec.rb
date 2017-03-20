@@ -6,10 +6,11 @@ RSpec.describe Web::Views::Contributors::Index do
   let(:view)      { described_class.new(template, exposures) }
   let(:rendered)  { view.render }
 
-  it 'exposes #foo' do
-    pending 'This is an auto-generated test. Edit it and add your own tests.'
+  describe '#link_to_github' do
+    let(:contributor) { Contributor.new(github: 'davydovanton') }
 
-    # Example
-    expect(view.foo).to eq exposures.fetch(:foo)
+    it 'returns link to contributor github' do
+      expect(view.link_to_github(contributor).to_s).to eq '<a href="https://github.com/davydovanton">davydovanton</a>'
+    end
   end
 end
