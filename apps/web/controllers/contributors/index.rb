@@ -4,7 +4,7 @@ module Web::Controllers::Contributors
     expose :contributors
 
     def call(params)
-      @contributors = ContributorRepository.new.all
+      @contributors = ContributorRepository.new.all_with_commits
     end
   end
 end
