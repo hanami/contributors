@@ -1,5 +1,14 @@
-- contributors.each do |contributor|
-  .contributor
-    .contributor__github
-      | #{link_to_github(contributor)} : #{contributor.commits.count}
+.title Hanami contribtors
+.contributors
+
+table
+  tr
+    th
+    th Github name
+    th Commits
+  - contributors.each_with_index do |contributor, i|
+    tr
+      td = i + 1
+      td = link_to_github(contributor)
+      td = contributor.commits.count
 
