@@ -6,7 +6,7 @@ Hanami::Model.migration do
       foreign_key :project_id,     :projects,     on_delete: :cascade
 
       column :sha, String
-      column :url, String
+      column :url, String, unique: true
 
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
