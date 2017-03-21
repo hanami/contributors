@@ -6,6 +6,7 @@ class AllContributors
   def call
     contributors = []
 
+    # TODO: doesn't work. we need to find other way to get all contributors for all repos
     ProjectRepository.new.all.each do |project|
       get_response(project).each { |data| contributors << contributor_data(data) }
     end
