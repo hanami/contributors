@@ -1,7 +1,7 @@
 require_relative '../../http_request'
 
 class AllContributors
-  API_URL = 'https://api.github.com/repos/hanami/%{project}/stats/contributors'.freeze
+  API_URL = 'https://api.github.com/repos/hanami/%{project}/stats/contributors?client_id=%{github_id}&client_secret=%{github_key}'.freeze
 
   def call
     contributors = []
@@ -23,7 +23,11 @@ class AllContributors
   end
 
   def get_response(project)
-    params = { project: project.name }
+    params = {
+      project: project.name,
+      github_id: ENV['GITHUB_API_ID'],
+      github_key: ENV['GITHUB_API_KEY']
+    }
 
     response = HttpRequest.new(API_URL % params).get
     return [] unless response.is_a?(Net::HTTPSuccess)
