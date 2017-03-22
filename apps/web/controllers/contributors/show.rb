@@ -5,7 +5,7 @@ module Web::Controllers::Contributors
 
     def call(params)
       @contributor = ContributorRepository.new.find_by_github(params[:id])
-      @commits = CommitRepository.new.where(contributor_id: @contributor.id).to_a
+      @commits = CommitRepository.new.all_for_contributor(@contributor.id)
     end
   end
 end
