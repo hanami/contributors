@@ -2,10 +2,35 @@ require_relative '../../../../apps/web/controllers/contributors/show'
 
 RSpec.describe Web::Controllers::Contributors::Show do
   let(:action) { described_class.new }
-  let(:params) { Hash[] }
+  let(:params) { { id: contributor.github } }
 
-  it 'is successful' do
-    response = action.call(params)
-    expect(response[0]).to eq 200
+  let(:repo) { ContributorRepository.new }
+  let(:contributor) { repo.create(github: 'davydovanton') }
+  let(:commit_repo) { CommitRepository.new }
+
+  it { expect(action.call(params)[0]).to eq 200 }
+
+  after { repo.clear }
+
+  context '#contributor' do
+    context 'when contributor has commits' do
+      before do
+        commit_repo.create(contributor_id: contributor.id, sha: '123', url: 'site.com')
+      end
+
+      after { commit_repo.clear }
+
+      it 'returns contributor with all commits' do
+        action.call(params)
+        expect(action.contributor.commits).to all(be_a(Commit))
+      end
+    end
+
+    context 'when contributor does not have commits' do
+      it 'returns contributor without commits' do
+        action.call(params)
+        expect(action.contributor.commits).to eq []
+      end
+    end
   end
 end
