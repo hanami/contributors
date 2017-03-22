@@ -3,6 +3,8 @@ require_relative '../../http_request'
 class AllCommits
   API_URL = 'https://api.github.com/repos/hanami/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100&author=%{author}'.freeze
 
+  COMMITS_COUNT_ON_PAGE = 100
+
   def call(contributor)
     projects = ProjectRepository.new.all
     commits = []
@@ -11,16 +13,8 @@ class AllCommits
       page = 1
       while (project_commits = get_response(project, contributor, page)) && !project_commits.empty?
         page += 1
-        project_commits.map do |data|
-          commits << {
-            contributor_id: contributor.id,
-            project_id: project.id,
-            title: data['commit']['message'].lines.first.chomp,
-            date:  data['commit']['author']['date'],
-            sha:   data['sha'],
-            url:   data['html_url']
-          }
-        end
+        project_commits.each { |data| commits << commit_information(contributor, project, data) }
+        break if project_commits.count < COMMITS_COUNT_ON_PAGE
       end
     end
 
@@ -28,6 +22,17 @@ class AllCommits
   end
 
   private
+
+    def commit_information(contributor, project, data)
+      {
+        contributor_id: contributor.id,
+        project_id: project.id,
+        title: data['commit']['message'].lines.first.chomp,
+        date:  data['commit']['author']['date'],
+        sha:   data['sha'],
+        url:   data['html_url']
+      }
+    end
 
   def get_response(project, contributors, page)
     params = {
