@@ -3,4 +3,5 @@
 #
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
+get '/contributors/:id', to: 'contributors#show'
 root to: 'contributors#index'
