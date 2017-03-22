@@ -14,7 +14,6 @@ class AllCommits
       while (project_commits = get_response(project, contributor, page)) && !project_commits.empty?
         page += 1
         project_commits.each { |data| commits << commit_information(contributor, project, data) }
-        break if project_commits.count < COMMITS_COUNT_ON_PAGE
       end
     end
 
