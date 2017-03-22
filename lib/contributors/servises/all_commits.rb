@@ -15,8 +15,10 @@ class AllCommits
           commits << {
             contributor_id: contributor.id,
             project_id: project.id,
-            sha: data['sha'],
-            url: data['html_url']
+            title: data['commit']['message'].lines.first.chomp,
+            date:  data['commit']['author']['date'],
+            sha:   data['sha'],
+            url:   data['html_url']
           }
         end
       end

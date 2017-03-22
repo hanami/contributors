@@ -1,17 +1,24 @@
 require_relative '../../http_request'
 
 class AllContributors
-  API_URL = 'https://api.github.com/repos/hanami/%{project}/stats/contributors?client_id=%{github_id}&client_secret=%{github_key}'.freeze
+  API_URL = 'https://api.github.com/repos/hanami/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100'.freeze
 
   def call
+    projects = ProjectRepository.new.all
     contributors = []
 
-    # TODO: doesn't work. we need to find other way to get all contributors for all repos
-    ProjectRepository.new.all.each do |project|
-      get_response(project).each { |data| contributors << contributor_data(data) }
+    projects.each do |project|
+      page = 1
+      while (project_commits = get_response(project, page)) && !project_commits.empty?
+        page += 1
+        project_commits.each do |data|
+          next unless data['author']
+          contributors << contributor_data(data)
+        end
+      end
     end
 
-    contributors.uniq { |contributor| contributor[:github] }
+    contributors.uniq! { |c| c[:github] }
   end
 
   private
@@ -23,8 +30,9 @@ class AllContributors
     }
   end
 
-  def get_response(project)
+  def get_response(project, page)
     params = {
+      page: page,
       project: project.name,
       github_id: ENV['GITHUB_API_ID'],
       github_key: ENV['GITHUB_API_KEY']
