@@ -3,7 +3,7 @@ module Web::Views::Contributors
     include Web::View
 
     def link_to_github(contributor)
-      link_to contributor.github, "https://github.com/#{contributor.github}"
+      link_to contributor.github, "/contributors/#{contributor.github}"
     end
   end
 end

@@ -8,7 +8,7 @@ class ContributorRepository < Hanami::Repository
     aggregate(:commits).as(Contributor).to_a.sort_by { |c| c.commits.count }.reverse!
   end
 
-  def find_with_commits(github)
-    aggregate(:commits).where(github: github).as(Contributor).one
+  def find_by_github(github)
+    contributors.where(github: github).as(Contributor).one
   end
 end

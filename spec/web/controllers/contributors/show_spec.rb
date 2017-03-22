@@ -13,6 +13,13 @@ RSpec.describe Web::Controllers::Contributors::Show do
   after { repo.clear }
 
   context '#contributor' do
+    it 'returns contributor' do
+      action.call(params)
+      expect(action.contributor).to be_a Contributor
+    end
+  end
+
+  context '#commits' do
     context 'when contributor has commits' do
       before do
         commit_repo.create(contributor_id: contributor.id, sha: '123', url: 'site.com')
@@ -22,14 +29,14 @@ RSpec.describe Web::Controllers::Contributors::Show do
 
       it 'returns contributor with all commits' do
         action.call(params)
-        expect(action.contributor.commits).to all(be_a(Commit))
+        expect(action.commits).to all(be_a(Commit))
       end
     end
 
     context 'when contributor does not have commits' do
       it 'returns contributor without commits' do
         action.call(params)
-        expect(action.contributor.commits).to eq []
+        expect(action.commits).to eq []
       end
     end
   end

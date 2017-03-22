@@ -10,7 +10,7 @@ RSpec.describe Web::Views::Contributors::Index do
     let(:contributor) { Contributor.new(github: 'davydovanton') }
 
     it 'returns link to contributor github' do
-      expect(view.link_to_github(contributor).to_s).to eq '<a href="https://github.com/davydovanton">davydovanton</a>'
+      expect(view.link_to_github(contributor).to_s).to eq '<a href="/contributors/davydovanton">davydovanton</a>'
     end
   end
 end
