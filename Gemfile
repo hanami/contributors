@@ -7,6 +7,7 @@ gem 'hanami-model', '~> 1.0.0.beta2'
 gem 'pg'
 
 gem 'slim'
+gem 'hanami-bootstrap', github: 'davydovanton/hanami-bootstrap'
 
 group :development do
   # Code reloading
