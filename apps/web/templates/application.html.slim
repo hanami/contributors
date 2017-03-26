@@ -7,6 +7,6 @@ html
     = stylesheet 'bootstrap', 'main'
   body
     .container
-      h2 Hanami contribtors
+      = render partial: 'shared/header'
       = yield
     = javascript 'bootstrap'
