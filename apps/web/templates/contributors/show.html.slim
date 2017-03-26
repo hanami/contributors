@@ -1,8 +1,9 @@
-h3 = contributor.github
+h3 
+  | All #{contributor.github} commits
 
-table
+table.table.table-hover
   - commits.each do |commit|
     tr
-      td = link_to commit.title, commit.url
+      td = link_to commit.title, commit.url, target: '_blank'
       td = project_name(commit)
 
