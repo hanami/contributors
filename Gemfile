@@ -8,6 +8,7 @@ gem 'pg'
 
 gem 'slim'
 gem 'hanami-bootstrap', github: 'davydovanton/hanami-bootstrap'
+gem 'sass'
 
 group :development do
   # Code reloading
