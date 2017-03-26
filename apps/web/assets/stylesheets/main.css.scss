@@ -5,3 +5,14 @@ a {
 .container {
   width: 60%;
 }
+
+.contributors_range {
+  color: #534a7f;
+  margin: 25px 0;
+
+  .active {
+    a {
+      background-color: #534a7f !important;
+    }
+  }
+}
