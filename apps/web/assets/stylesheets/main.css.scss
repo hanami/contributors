@@ -2,8 +2,16 @@ a {
   color: #534a7f;
 }
 
-.container {
-  width: 60%;
+@media (min-width: 769px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px){
+  .container {
+    width: 100%;
+  }
 }
 
 .contributors_range {
