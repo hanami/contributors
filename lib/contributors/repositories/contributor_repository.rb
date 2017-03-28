@@ -5,16 +5,17 @@ class ContributorRepository < Hanami::Repository
   end
 
   def all_with_commits(range = nil)
-    query = if range
+    if range
       aggregate(:commits)
         .contributors
         .join(commits)
         .where(commits[:created_at].qualified => range)
+        .as(Contributor).to_a
+        .sort_by { |c| c.commits.count }.reverse!
+        .uniq! { |c| c.github }
     else
-      aggregate(:commits)
+      aggregate(:commits).as(Contributor).to_a.sort_by { |c| c.commits.count }.reverse!
     end
-
-    query.as(Contributor).to_a.sort_by { |c| c.commits.count }.reverse!
   end
 
   def find_by_github(github)
