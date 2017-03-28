@@ -27,7 +27,7 @@ class AllCommits
         contributor_id: contributor.id,
         project_id: project.id,
         title: data['commit']['message'].lines.first.chomp,
-        date:  data['commit']['author']['date'],
+        created_at:  Time.parse(data['commit']['author']['date']),
         sha:   data['sha'],
         url:   data['html_url']
       }
