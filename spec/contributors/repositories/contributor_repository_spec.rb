@@ -19,7 +19,7 @@ RSpec.describe ContributorRepository do
     end
   end
 
-  describe '#all_with_commits' do
+  describe '#with_commit_range' do
     before do
       other_commiter = repo.create(github: 'test')
 
@@ -31,8 +31,8 @@ RSpec.describe ContributorRepository do
 
     let(:range) { (Time.now - 60 * 60 * 24)..Time.now }
 
-    it { expect(repo.all_with_commits(range).count).to eq 1 }
-    it { expect(repo.all_with_commits(range).last.github).to eq 'davydovanton' }
-    it { expect(repo.all_with_commits(range).last.commits.count).to eq 1 }
+    it { expect(repo.with_commit_range(range).count).to eq 1 }
+    it { expect(repo.with_commit_range(range).last.github).to eq 'davydovanton' }
+    it { expect(repo.with_commit_range(range).last.commits.count).to eq 1 }
   end
 end

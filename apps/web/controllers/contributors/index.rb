@@ -5,22 +5,28 @@ module Web::Controllers::Contributors
 
     def call(params)
       range = date_range(params[:range])
-      @contributors = ContributorRepository.new.all_with_commits(range)
+
+      @contributors =
+        range ? repo.with_commit_range(range) : repo.all_with_commits
     end
 
     private
 
-      ONE_DAY = 60 * 60 * 24
+    ONE_DAY = 60 * 60 * 24
 
-      def date_range(key)
-        case key
-        when 'day'   then (Time.now - ONE_DAY)..Time.now
-        when 'week'  then (Time.now - ONE_DAY * 7)..Time.now
-        when 'month' then (Time.now - ONE_DAY * 31)..Time.now
-        when 'year'  then (Time.now - ONE_DAY * 365)..Time.now
-        else
-          nil
-        end
+    def date_range(key)
+      case key
+      when 'day'   then (Time.now - ONE_DAY)..Time.now
+      when 'week'  then (Time.now - ONE_DAY * 7)..Time.now
+      when 'month' then (Time.now - ONE_DAY * 31)..Time.now
+      when 'year'  then (Time.now - ONE_DAY * 365)..Time.now
+      else
+        nil
       end
+    end
+
+    def repo
+      @repo ||= ContributorRepository.new
+    end
   end
 end
