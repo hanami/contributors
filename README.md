@@ -12,9 +12,9 @@ bundle exec ruby db/seed.rb
 
 ## TODO
 * ~~Replace all service to seed file~~
-* Parse commit date
+* ~~Parse commit date~~
+* ~~create actions for day, week, moonth and year (in `contributors#index`)~~
+* ~~mobile wersion~~
 * Create "Since field for contributors"
-* create actions for day, week, moonth and year (in `contributors#index`)
 * CI (travis)
 * update tests
-* 
