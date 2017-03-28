@@ -19,3 +19,5 @@ PROJECTS = %w[
 
 repo = ProjectRepository.new
 PROJECTS.each { |name| repo.create(name: name) }
+AddNewContributors.new.call
+AddNewCommits.new.call
