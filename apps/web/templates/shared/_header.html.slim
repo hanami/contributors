@@ -2,17 +2,17 @@ h2 Hanami contributors
 
 .contributors_range
   ul.nav.nav-pills
-    li.active role="presentation"
+    li class=all_time_page_class role="presentation"
       a href='/' All time
-    li role="presentation"
+    li class=today_page_class role="presentation"
       a href='/?range=day' Today
-    li role="presentation"
+    li class=this_week_page_class role="presentation"
       a href='/?range=week' This week
-    li role="presentation"
+    li class=this_month_page_class role="presentation"
       a href='/?range=month' This month
-    li role="presentation"
+    li class=this_year_page_class role="presentation"
       a href='/?range=year' This year
-    li role="presentation"
+    li class=faq_page_class role="presentation"
       = link_to 'FAQ', routes.faq_path
     li role="presentation"
       a href='https://github.com/davydovanton/hanami-contributors' target='_blank' Source

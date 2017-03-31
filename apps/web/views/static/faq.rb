@@ -5,5 +5,9 @@ module Web::Views::Static
     def title
       'F.A.Q. page'
     end
+
+    def faq_page_class
+      'active'
+    end
   end
 end

@@ -19,4 +19,13 @@ RSpec.describe Web::Views::Contributors::Show do
       it { expect(view.project_name(commit)).to eq nil }
     end
   end
+
+  describe 'navbar link css' do
+    it { expect(view.all_time_page_class).to eq nil }
+    it { expect(view.today_page_class).to eq nil }
+    it { expect(view.this_week_page_class).to eq nil }
+    it { expect(view.this_month_page_class).to eq nil }
+    it { expect(view.this_year_page_class).to eq nil }
+    it { expect(view.faq_page_class).to eq nil }
+  end
 end
