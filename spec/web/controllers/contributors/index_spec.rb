@@ -9,16 +9,24 @@ RSpec.describe Web::Controllers::Contributors::Index do
 
   describe 'expose' do
     describe '#contributors' do
-      before do
-        3.times { |i| repo.create(github: "davydovanton##{i}") }
-        action.call(params)
+      context 'when db empty' do
+        before { action.call(params) }
+
+        it { expect(action.contributors).to eq [] }
       end
 
-      after { repo.clear }
+      context 'when db has some commits' do
+        before do
+          3.times { |i| repo.create(github: "davydovanton##{i}") }
+          action.call(params)
+        end
 
-      it 'returns all tasks' do
-        expect(action.contributors).to all(be_a(Contributor))
-        expect(action.contributors.count).to eq 3
+        after { repo.clear }
+
+        it 'returns all tasks' do
+          expect(action.contributors).to all(be_a(Contributor))
+          expect(action.contributors.count).to eq 3
+        end
       end
     end
   end

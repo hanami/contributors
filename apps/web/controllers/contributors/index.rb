@@ -4,15 +4,17 @@ module Web::Controllers::Contributors
     expose :contributors
 
     def call(params)
-      range = date_range(params[:range])
-
-      @contributors =
-        range ? repo.with_commit_range(range) : repo.all_with_commits
+      @contributors = contributor_list || []
     end
 
     private
 
     ONE_DAY = 60 * 60 * 24
+
+    def contributor_list
+      range = date_range(params[:range])
+      range ? repo.with_commit_range(range) : repo.all_with_commits
+    end
 
     def date_range(key)
       case key
