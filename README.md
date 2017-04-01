@@ -17,4 +17,9 @@ bundle exec ruby db/seed.rb
 * ~~mobile wersion~~
 * Create "Since field for contributors"
 * CI (travis)
+* fix specs
 * update tests
+* add sidekiq
+* add cron jobs for update contributors and commits
+* update readme page
+* update development information
