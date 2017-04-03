@@ -14,6 +14,9 @@ gem 'slim'
 gem 'hanami-bootstrap', github: 'davydovanton/hanami-bootstrap'
 gem 'sass'
 
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
