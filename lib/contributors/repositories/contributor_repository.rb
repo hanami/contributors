@@ -14,8 +14,8 @@ class ContributorRepository < Hanami::Repository
       .join(commits)
       .where(commits[:created_at].qualified => range)
       .as(Contributor).to_a
-      .sort_by { |c| c.commits.count }.reverse!
-      .uniq! { |c| c.github }
+      .sort { |first, second| second.commits.count <=> first.commits.count }
+      .uniq { |c| c.github }
   end
 
   def find_by_github(github)
