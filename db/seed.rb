@@ -15,6 +15,7 @@ PROJECTS = %w[
   mailer
   docs
   ecosystem
+  contributors
 ]
 
 repo = ProjectRepository.new
