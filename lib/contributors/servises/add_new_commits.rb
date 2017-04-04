@@ -1,7 +1,11 @@
 class AddNewCommits
   def call
     repo.all.each do |contributor|
-      AllCommits.new.call(contributor).each { |c| commit_repo.create(c) }
+      begin
+        AllCommits.new.call(contributor).each { |c| commit_repo.create(c) }
+      rescue
+        next
+      end
     end
   end
 
