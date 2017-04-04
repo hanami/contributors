@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
-
-ruby '2.3.0'
+ruby '2.4.1'
 
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '1.0.0.beta2'
-gem 'hanami-model', '~> 1.0.0.beta2'
+gem 'hanami',       '1.0.0.rc1'
+gem 'hanami-model', '1.0.0.rc1'
 
 gem 'pg'
 
 gem 'slim'
-gem 'hanami-bootstrap', github: 'davydovanton/hanami-bootstrap'
+gem 'hanami-bootstrap', git: 'https://github.com/davydovanton/hanami-bootstrap.git'
 gem 'sass'
 
 gem 'sidekiq'
