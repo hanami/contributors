@@ -13,7 +13,7 @@ module Web::Controllers::Contributors
 
     def contributor_list
       range = date_range(params[:range])
-      range ? repo.with_commit_range(range) : repo.all_with_commits
+      range ? repo.with_commit_range(range) : repo.all_with_commits_count
     end
 
     def date_range(key)
