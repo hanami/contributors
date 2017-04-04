@@ -15,7 +15,7 @@ RSpec.describe Web::Controllers::Contributors::Index do
         it { expect(action.contributors).to eq [] }
       end
 
-      context 'when db has some commits' do
+      xcontext 'when db has some commits' do
         before do
           3.times { |i| repo.create(github: "davydovanton##{i}") }
           action.call(params)

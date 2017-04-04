@@ -33,6 +33,6 @@ RSpec.describe ContributorRepository do
 
     it { expect(repo.with_commit_range(range).count).to eq 1 }
     it { expect(repo.with_commit_range(range).last.github).to eq 'davydovanton' }
-    it { expect(repo.with_commit_range(range).last.commits.count).to eq 1 }
+    it { expect(repo.with_commit_range(range).last.commits_count).to eq 1 }
   end
 end
