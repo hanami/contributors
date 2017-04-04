@@ -10,7 +10,7 @@ gem 'hanami-model', '1.0.0.rc1'
 gem 'pg'
 
 gem 'slim'
-gem 'hanami-bootstrap', git: 'https://github.com/davydovanton/hanami-bootstrap.git'
+gem 'hanami-bootstrap', '0.4'
 gem 'sass'
 
 gem 'sidekiq'
