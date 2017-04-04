@@ -17,6 +17,11 @@ gem 'sass'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
+gem 'redis', '~>3.2'
+gem 'hiredis'
+gem 'mock_redis'
+gem 'connection_pool'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
