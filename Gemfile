@@ -4,8 +4,8 @@ ruby '2.4.1'
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '1.0.0.rc1'
-gem 'hanami-model', '1.0.0.rc1'
+gem 'hanami',       '1.0.0'
+gem 'hanami-model', '1.0.0'
 
 gem 'pg'
 
