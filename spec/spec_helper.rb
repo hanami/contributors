@@ -1,6 +1,14 @@
 # Require this file for unit tests
 ENV['HANAMI_ENV'] ||= 'test'
 
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/config/"
+  add_filter "/db/"
+end
+
 require_relative '../config/environment'
 Hanami.boot
 Hanami::Utils.require!("#{__dir__}/support")
