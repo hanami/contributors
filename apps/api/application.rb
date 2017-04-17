@@ -18,10 +18,7 @@ module Api
       #
       # When you add new directories, remember to add them here.
       #
-      load_paths << [
-        'controllers',
-        'views'
-      ]
+      load_paths << ['controllers']
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
       # Defaults to true.
@@ -103,7 +100,7 @@ module Api
       #             (only `:json` is supported)
       #           Object, the parser
       #
-      # body_parsers :json
+      body_parsers :json
 
       # When it's true and the router receives a non-encrypted request (http),
       # it redirects to the secure equivalent (https). Disabled by default.
@@ -116,16 +113,16 @@ module Api
 
       # The layout to be used by all views
       #
-      layout :application # It will load Api::Views::ApplicationLayout
+      # layout :application # It will load Api::Views::ApplicationLayout
 
       # The relative path to templates
       #
-      templates 'templates'
+      # templates 'templates'
 
       ##
       # ASSETS
       #
-      assets do
+      # assets do
         # JavaScript compressor
         #
         # Supported engines:
@@ -138,7 +135,7 @@ module Api
         # See: http://hanamirb.org/guides/assets/compressors
         #
         # In order to skip JavaScript compression comment the following line
-        javascript_compressor :builtin
+        # javascript_compressor :builtin
 
         # Stylesheet compressor
         #
@@ -151,14 +148,14 @@ module Api
         # See: http://hanamirb.org/guides/assets/compressors
         #
         # In order to skip stylesheet compression comment the following line
-        stylesheet_compressor :builtin
+        # stylesheet_compressor :builtin
 
         # Specify sources for assets
         #
-        sources << [
-          'assets'
-        ]
-      end
+        # sources << [
+        #   'assets'
+        # ]
+      # end
 
       ##
       # SECURITY
@@ -267,10 +264,10 @@ module Api
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-view#Configuration
-      view.prepare do
-        include Hanami::Helpers
-        include Api::Assets::Helpers
-      end
+      # view.prepare do
+      #   include Hanami::Helpers
+      #   include Api::Assets::Helpers
+      # end
     end
 
     ##
@@ -297,16 +294,16 @@ module Api
       # host   'example.org'
       # port   443
 
-      assets do
+      # assets do
         # Don't compile static assets in production mode (eg. Sass, ES6)
         #
         # See: http://www.rubydoc.info/gems/hanami-assets#Configuration
-        compile false
+        # compile false
 
         # Use fingerprint file name for asset paths
         #
         # See: http://hanamirb.org/guides/assets/overview
-        fingerprint true
+        # fingerprint true
 
         # Content Delivery Network (CDN)
         #
@@ -319,8 +316,8 @@ module Api
         # Subresource Integrity
         #
         # See: http://hanamirb.org/guides/assets/content-delivery-network/#subresource-integrity
-        subresource_integrity :sha256
-      end
+        # subresource_integrity :sha256
+      # end
     end
   end
 end
