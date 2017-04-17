@@ -1,11 +1,9 @@
 class ContributorSerialization < Dry::Struct
-  CommitsCount = Contributor::Types::Strict::Decimal.default { 0 }
-
   constructor_type :weak
 
-  attribute :github,        Contributor::Types::Strict::String
-  attribute :avatar_url,    Contributor::Types::Strict::String
-  attribute :commits_count, CommitsCount
+  attribute :github,        ::Types::Github
+  attribute :avatar_url,    ::Types::AvatarUrl
+  attribute :commits_count, ::Types::CommitsCount
 
   def initialize(attributes)
     attributes = Hash(attributes)
