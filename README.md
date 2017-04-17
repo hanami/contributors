@@ -2,6 +2,21 @@
 
 Display all hanami contributors on the one page.
 
+## JSON API
+### `GET /api/contributors`
+```
+{
+  "count": Integer,
+  "data":[{
+    "github": String,
+    "avatar_url": String,
+    "commits_count": Integer
+  },
+  ...
+  ]
+}
+```
+
 ## Development
 ### First
 Create GitHub keys for data aggregation. You can do it [here](https://github.com/settings/applications/new).
