@@ -3,7 +3,17 @@ module Api::Controllers::Contributors
     include Api::Action
 
     def call(params)
-      self.body = JSON.generate({})
+      contributors = repo.all_with_commits_count
+      self.body = JSON.generate(
+        count: contributors.size,
+        data: contributors
+      )
+    end
+
+    private
+
+    def repo
+      @repo ||= ContributorRepository.new
     end
   end
 end
