@@ -31,7 +31,7 @@ RSpec.describe Api::Controllers::Contributors::Index do
 
     it 'contains contributors information' do
       expect(json['count']).to eq 1
-      expect(json['data'].count).to eq 1
+      expect(json['data']).to eq [{"github"=>"davydovanton", "avatar_url"=>nil, "commits_count"=>1}]
     end
   end
 end
