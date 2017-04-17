@@ -18,7 +18,7 @@ module Api
       #
       # When you add new directories, remember to add them here.
       #
-      load_paths << ['controllers']
+      load_paths << %w[controllers serializators]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
       # Defaults to true.
