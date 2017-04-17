@@ -1,6 +1,3 @@
-require 'hanami/helpers'
-require 'hanami/assets'
-
 module Api
   class Application < Hanami::Application
     configure do
@@ -92,7 +89,7 @@ module Api
       # Default format for responses that don't consider the request format
       # Argument: A symbol representation of a mime type, defaults to :html
       #
-      # default_response_format :html
+      default_response_format :json
 
       # HTTP Body parsers
       # Parse non GET responses body for a specific mime type
