@@ -1,3 +1,5 @@
+require_relative './test'
+
 module Web
   module Views
     class ApplicationLayout
