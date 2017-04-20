@@ -13,6 +13,9 @@ gem 'slim'
 gem 'hanami-bootstrap', '0.4'
 gem 'sass'
 
+# api
+gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
+
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 

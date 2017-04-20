@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/davydovanton/hanami-serializer.git
+  revision: af475efa816165be23d4574e311ddd3c1ff83023
+  specs:
+    hanami-serializer (0.1.0)
+      dry-struct
+      dry-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -215,6 +223,7 @@ DEPENDENCIES
   hanami (= 1.0.0)
   hanami-bootstrap (= 0.4)
   hanami-model (= 1.0.0)
+  hanami-serializer!
   hiredis
   mock_redis
   pg
