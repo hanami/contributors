@@ -5,7 +5,7 @@ module Types
   AvatarUrl = Strict::String
   CommitsCount = Strict::Decimal.default { 0 }
 
-  Commit = Types::Hash.schema(
+  Commit = Types::Strict::Hash.weak(
     sha:        Strict::String,
     url:        Strict::String,
     title:      Strict::String,
