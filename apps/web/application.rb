@@ -311,7 +311,7 @@ module Web
         # Subresource Integrity
         #
         # See: http://hanamirb.org/guides/assets/content-delivery-network/#subresource-integrity
-        subresource_integrity :sha256
+        subresource_integrity false
       end
     end
   end
