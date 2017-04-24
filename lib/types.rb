@@ -1,7 +1,16 @@
 module Types
   include Dry::Types.module
 
-  Github = Types::Strict::String
-  AvatarUrl = Types::Strict::String
-  CommitsCount = Contributor::Types::Strict::Decimal.default { 0 }
+  Github = Strict::String
+  AvatarUrl = Strict::String
+  CommitsCount = Strict::Decimal.default { 0 }
+
+  Commit = Types::Strict::Hash.weak(
+    sha:        Strict::String,
+    url:        Strict::String,
+    title:      Strict::String,
+    created_at: Strict::Time
+  )
+
+  Commits = Types::Strict::Array.member(Commit)
 end

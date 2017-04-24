@@ -8,7 +8,7 @@ RSpec.describe Web::Controllers::Contributors::Show do
   let(:contributor) { repo.create(github: 'davydovanton') }
   let(:commit_repo) { CommitRepository.new }
 
-  it { expect(action.call(params)[0]).to eq 200 }
+  it { expect(action.call(params)).to be_success }
 
   after { repo.clear }
 
