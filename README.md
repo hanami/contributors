@@ -17,6 +17,23 @@ Display all hanami contributors on the one page.
 }
 ```
 
+### `GET /api/contributors/:github`
+```
+{
+  "status": "ok",
+  "contributor": {
+    "github": String,
+    "avatar_url": String,
+    "commits": [{
+      "url": String,
+      "title": String,
+      "created_at": "2017-03-08 09:00:56 UTC"
+    },
+    ...
+  }
+}
+```
+
 ## Development
 ### First
 Create GitHub keys for data aggregation. You can do it [here](https://github.com/settings/applications/new).
