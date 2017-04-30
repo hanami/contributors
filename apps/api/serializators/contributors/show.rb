@@ -1,8 +1,8 @@
+require_relative '../contributor'
+
 module Api::Serializators
   module Contributors
-    class Show < Hanami::Serializer::Base
-      attribute :github,     ::Types::Github
-      attribute :avatar_url, ::Types::AvatarUrl
+    class Show < Contributor
       attribute :commits,    ::Types::Commits
     end
   end
