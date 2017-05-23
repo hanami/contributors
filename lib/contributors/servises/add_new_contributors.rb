@@ -3,11 +3,11 @@ class AddNewContributors
     contributors = repo.all
     new_contributors = AllContributors.new.call
 
-    new_contributors.each do |contributor|
-      unless contributors.any? { |c| c.github == contributor[:github] }
-        repo.create(contributor)
-      end
+    new_contributors = new_contributors.select do |contributor|
+      !contributors.any? { |c| c.github == contributor[:github] }
     end
+
+    repo.create(new_contributors)
   end
 
   private
