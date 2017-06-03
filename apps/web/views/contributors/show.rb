@@ -15,5 +15,9 @@ module Web::Views::Contributors
     def title
       "Commits for #{contributor.github}"
     end
+
+    def show_pagination?
+      pager.pager.total_pages > 1
+    end
   end
 end
