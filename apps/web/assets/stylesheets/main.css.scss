@@ -24,3 +24,19 @@ a {
     }
   }
 }
+
+.pagination {
+  li {
+    a {
+      color: #534a7f !important;
+    }
+  }
+
+  li.active {
+    a {
+      background-color: #534a7f !important;
+      border-color: #534a7f !important;
+      color: #fff !important;
+    }
+  }
+}
