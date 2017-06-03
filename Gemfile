@@ -13,6 +13,8 @@ gem 'slim'
 gem 'hanami-bootstrap', '0.4'
 gem 'sass'
 
+gem 'hanami-pagination'
+
 # api
 gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
 

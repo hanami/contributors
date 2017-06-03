@@ -13,7 +13,7 @@ module Api::Controllers::Contributors
     def responce_hash(contributor)
       return ERROR_RESPONCE unless contributor
 
-      commits = CommitRepository.new.all_for_contributor(contributor.id).map(&:to_h)
+      commits = CommitRepository.new.all_for_contributor(contributor.id).to_a.map(&:to_h)
 
       {
         status: :ok,
