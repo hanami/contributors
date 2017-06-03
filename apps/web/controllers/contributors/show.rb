@@ -9,11 +9,5 @@ module Web::Controllers::Contributors
       @contributor = ContributorRepository.new.find_by_github(params[:id])
       @commits = all_for_page(CommitRepository.new.all_for_contributor(@contributor.id))
     end
-
-    private
-
-    def limit
-      100
-    end
   end
 end
