@@ -1,6 +1,11 @@
 module Web::Views::Contributors
   class Show
     include Web::View
+    include Hanami::Pagination::View
+
+    def active_class(page)
+      'active' if pager.current_page?(page)
+    end
 
     def project_name(commit)
       matcher = commit.url.match(%r{github.com/hanami/([\w.]+)/})

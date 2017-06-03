@@ -7,3 +7,16 @@ table.table.table-hover
       td = link_to commit.title, commit.url, target: '_blank'
       td = project_name(commit)
 
+nav aria-label="Page navigation"
+  ul class="pagination"
+    - if pager.prev_page
+      li
+        a href="#{prev_page_url}" aria-label="Previous"
+          span aria-hidden="true" &laquo;
+    - pager.pages_range.each do |i|
+      li class="#{active_class(i)}"
+        a href="/contributors/#{contributor.github}/?page=#{i}" = i
+    - if pager.next_page
+      li
+        a href="#{next_page_url}" aria-label="Next"
+          span aria-hidden="true" &raquo;

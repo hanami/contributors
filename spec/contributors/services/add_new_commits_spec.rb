@@ -15,7 +15,7 @@ RSpec.describe AddNewCommits do
     VCR.use_cassette("commits") do
       described_class.new.call
 
-      commits = commit_repo.all_for_contributor(contributor.id)
+      commits = commit_repo.all_for_contributor(contributor.id).to_a
 
       expect(commits).not_to be_empty
       expect(commits.first.url).to be
