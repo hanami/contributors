@@ -16,6 +16,12 @@ Hanami::Utils.require!("#{__dir__}/support")
 require 'rspec/hanami'
 require 'vcr'
 
+require 'dry/container/stub'
+Application.enable_stubs!
+Application.stub(:redis, ConnectionPool.new(size: 10, timeout: 3) {
+  MockRedis.new
+})
+
 VCR.configure do |c|
   c.hook_into :webmock
   c.cassette_library_dir = 'spec/cassettes'
