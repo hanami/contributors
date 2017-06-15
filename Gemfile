@@ -21,6 +21,8 @@ gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
+gem 'dry-system'
+
 gem 'redis', '~>3.2'
 gem 'hiredis'
 gem 'mock_redis'
