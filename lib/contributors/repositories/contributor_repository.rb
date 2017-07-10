@@ -27,6 +27,6 @@ class ContributorRepository < Hanami::Repository
   end
 
   def find_by_github(github)
-    contributors.where(github: github).as(Contributor).one
+    contributors.where(github: github).map_to(Contributor).one
   end
 end
