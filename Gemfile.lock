@@ -74,7 +74,6 @@ GEM
       bundler (~> 1.13)
       concurrent-ruby (~> 1.0)
       hanami-assets (~> 1.0)
-      hanami-cli
       hanami-controller (~> 1.0)
       hanami-helpers (~> 1.0)
       hanami-mailer (~> 1.0)
@@ -89,9 +88,6 @@ GEM
       tilt (~> 2.0, >= 2.0.2)
     hanami-bootstrap (0.4.0)
       hanami-assets (>= 0.2, < 2)
-    hanami-cli (1.0.0)
-      concurrent-ruby (~> 1.0)
-      hanami-utils (~> 1.0)
     hanami-controller (1.0.1)
       hanami-utils (~> 1.0)
       rack (~> 2.0)
