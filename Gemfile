@@ -17,6 +17,7 @@ gem 'hanami-pagination'
 
 # api
 gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
+gem 'graphql'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
