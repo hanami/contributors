@@ -16,5 +16,4 @@ map '/sidekiq' do
   run Sidekiq::Web
 end
 
-
 run Hanami.app
