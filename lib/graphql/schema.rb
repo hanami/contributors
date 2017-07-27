@@ -28,6 +28,10 @@ end
 #
 #     commits {
 #       url
+#
+#       project {
+#         name
+#       }
 #     }
 #   }
 # }
