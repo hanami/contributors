@@ -70,6 +70,7 @@ GEM
       dry-types (~> 0.11.0)
     et-orbi (1.0.5)
       tzinfo
+    graphql (1.6.6)
     hanami (1.0.0)
       bundler (~> 1.13)
       concurrent-ruby (~> 1.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   connection_pool
   dotenv (~> 2.0)
   dry-system
+  graphql
   hanami (= 1.0.0)
   hanami-bootstrap (= 0.4)
   hanami-model (= 1.0.0)
