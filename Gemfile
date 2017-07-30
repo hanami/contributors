@@ -7,6 +7,9 @@ gem 'rake'
 gem 'hanami',       '1.0.0'
 gem 'hanami-model', '1.0.0'
 
+# healthcheck
+gem 'wet-health_endpoint'
+
 gem 'pg'
 
 gem 'slim'
