@@ -4,8 +4,10 @@ ruby '2.4.1'
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '1.0.0'
-gem 'hanami-model', '1.0.0'
+gem 'hanami',       '1.1.0.beta1'
+gem 'hanami-model', '1.1.0.beta1'
+
+gem 'dry-struct'
 
 # healthcheck
 gem 'wet-health_endpoint'
@@ -16,7 +18,7 @@ gem 'slim'
 gem 'hanami-bootstrap', '0.4'
 gem 'sass'
 
-gem 'hanami-pagination'
+gem 'hanami-pagination', git: 'https://github.com/jodosha/hanami-pagination.git', branch: 'fix/hanami-repository-superclass'
 
 # api
 gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
