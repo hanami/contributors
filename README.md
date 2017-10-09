@@ -36,6 +36,12 @@ Display all hanami contributors on the one page.
 
 ## Development
 ### First
+Copy .env files
+```
+cp .env.development.sample .env.development && cp .env.test.sample .env.test
+```
+
+### Second
 Create GitHub keys for data aggregation. You can do it [here](https://github.com/settings/applications/new).
 
 After that you need to set `GITHUB_API_ID` and `GITHUB_API_KEY` env variables in `# in .env.development` file:
@@ -46,11 +52,10 @@ GITHUB_API_ID="<id>"
 GITHUB_API_KEY="<key>"
 ```
 
-### Second
+### Third
 You need to create db table and call all migrations, for this run this commands
 ```
-bundle exec hanami db create
-bundle exec hanami db migrate
+bundle exec hanami db prepare
 ```
 
 After that, you need to call data aggregation. For this just call `db/seed.rb` file:
