@@ -6,4 +6,5 @@ rvm:
 services:
   - postgresql
 before_script:
+  - cp .env.test.sample .env.test
   - bundle exec hanami db prepare
