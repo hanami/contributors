@@ -14,8 +14,10 @@ RSpec.describe Api::Controllers::Contributors::Index do
   end
 
   context 'when db has some commits' do
+    let(:since) { Time.now.utc }
+
     before do
-      contributor = repo.create(github: "davydovanton")
+      contributor = repo.create(github: "davydovanton", since: since)
 
       CommitRepository.new.create(
         contributor_id: contributor.id,
@@ -31,7 +33,14 @@ RSpec.describe Api::Controllers::Contributors::Index do
 
     it 'contains contributors information' do
       expect(json['count']).to eq 1
-      expect(json['data']).to eq [{"github"=>"davydovanton", "avatar_url"=>nil, "commits_count"=>1}]
+      expect(json['data']).to eq([
+        {
+          "github" => "davydovanton",
+          "avatar_url" => nil,
+          "commits_count" => 1,
+          "since" => since.to_s
+        }
+      ])
     end
   end
 end

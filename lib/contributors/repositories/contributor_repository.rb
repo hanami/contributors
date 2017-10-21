@@ -29,4 +29,22 @@ class ContributorRepository < Hanami::Repository
   def find_by_github(github)
     contributors.where(github: github).map_to(Contributor).one
   end
+
+  def fill_since
+    sql = <<-SQL
+      UPDATE contributors
+        SET since = contributor_first_commit.since
+        FROM
+          (
+            SELECT min(created_at) as since, contributor_id
+              FROM commits
+              GROUP BY contributor_id
+          ) AS contributor_first_commit
+        WHERE
+          id = contributor_first_commit.contributor_id
+          AND contributors.since is NULL
+    SQL
+
+    container.gateways[:default].connection.run(sql)
+  end
 end

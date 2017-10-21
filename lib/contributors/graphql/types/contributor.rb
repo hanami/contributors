@@ -5,6 +5,7 @@ module Graphql
       field :id, types.ID
       field :github, types.String
       field :full_name, types.String
+      field :since, types.String
       field :avatar_url, types.String
       field :commits_count, types.Int
 

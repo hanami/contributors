@@ -4,8 +4,9 @@ RSpec.describe Api::Controllers::Contributors::Show do
   let(:action) { described_class.new }
   let(:params) { { id: contributor.github } }
 
+  let(:since) { Time.now.utc }
   let(:repo) { ContributorRepository.new }
-  let(:contributor) { repo.create(github: 'davydovanton') }
+  let(:contributor) { repo.create(github: 'davydovanton', since: since) }
 
   let(:json) { JSON.parse(action.call(params)[2][0]) }
 
@@ -24,6 +25,16 @@ RSpec.describe Api::Controllers::Contributors::Show do
     let(:params) { { id: contributor.github } }
 
     it { expect(action.call(params)).to be_success }
-    it { expect(json).to eq("status" => "ok", "contributor" => {"github"=>"davydovanton", "avatar_url"=>nil, "commits"=>[]}) }
+    it do
+      expect(json).to eq(
+        "status" => "ok",
+        "contributor" => {
+          "github" => "davydovanton",
+          "avatar_url" => nil,
+          "since" => since.to_s,
+          "commits"=>[]
+        }
+      )
+    end
   end
 end

@@ -1,9 +1,13 @@
 class AddNewCommits
   def call
-    repo.all.each do |contributor|
-      AllCommits.new.call(contributor)
+    commits_finder = AllCommits.new
+
+    contributor_repo.all.each do |contributor|
+      commits_finder.call(contributor)
         .each { |commit| create_commit(commit) }
     end
+
+    contributor_repo.fill_since
   end
 
   private
@@ -16,7 +20,7 @@ class AddNewCommits
     end
   end
 
-  def repo
+  def contributor_repo
     @repo ||= ContributorRepository.new
   end
 
