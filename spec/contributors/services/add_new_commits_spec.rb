@@ -21,6 +21,7 @@ RSpec.describe AddNewCommits do
       expect(commits.first.url).to be
       expect(commits.first.title).to be
       expect(commits.first.project_id).to eq(project.id)
+      expect(contributor_repo.last.since).to be
     end
   end
 end

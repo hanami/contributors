@@ -10,6 +10,7 @@ Display all hanami contributors on the one page.
   "data":[{
     "github": String,
     "avatar_url": String,
+    "since": "2017-03-08 09:00:56 UTC",
     "commits_count": Integer
   },
   ...
@@ -24,6 +25,7 @@ Display all hanami contributors on the one page.
   "contributor": {
     "github": String,
     "avatar_url": String,
+    "since": "2017-03-08 09:00:56 UTC",
     "commits": [{
       "url": String,
       "title": String,

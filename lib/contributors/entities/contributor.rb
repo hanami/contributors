@@ -6,6 +6,7 @@ class Contributor < Hanami::Entity
     attribute :full_name,      Types::String
     attribute :avatar_url,     Types::String
     attribute :commits_count,  Types::Int
+    attribute :since,          Types::Time
 
     attribute :created_at, Types::Time
     attribute :updated_at, Types::Time
