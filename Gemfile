@@ -4,8 +4,8 @@ ruby '2.4.2'
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '1.1.0.rc1'
-gem 'hanami-model', '1.1.0.rc1'
+gem 'hanami',       '~> 1.1'
+gem 'hanami-model', '~> 1.1'
 
 gem 'dry-struct'
 
