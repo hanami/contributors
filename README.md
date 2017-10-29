@@ -46,7 +46,7 @@ cp .env.development.sample .env.development && cp .env.test.sample .env.test
 ### Second
 Create GitHub keys for data aggregation. You can do it [here](https://github.com/settings/applications/new).
 
-After that you need to set `GITHUB_API_ID` and `GITHUB_API_KEY` env variables in `# in .env.development` file:
+After that you need to set `GITHUB_API_ID` (Client ID) and `GITHUB_API_KEY` (Client Secret) env variables in `# in .env.development` file:
 
 ```
 # in .env.development
