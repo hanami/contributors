@@ -137,6 +137,8 @@ GEM
       url_mount (~> 0.2.1)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    jquery-hanami (0.1.0)
+      hanami-assets
     json (2.1.0)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
@@ -261,6 +263,7 @@ DEPENDENCIES
   hanami-pagination!
   hanami-serializer!
   hiredis
+  jquery-hanami
   mock_redis
   pg
   puma
@@ -282,4 +285,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
