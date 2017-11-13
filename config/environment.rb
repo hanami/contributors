@@ -1,3 +1,8 @@
+require 'multi_json'
+
+class MultiJson::ParseError < ::JSON::ParserError
+end
+
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'

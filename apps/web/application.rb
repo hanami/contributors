@@ -80,6 +80,7 @@ module Web
       # Configure Rack middleware for this application
       #
       middleware.use Wet::HealthEndpoint::Middleware
+      # middleware.use Rack::Webconsole
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html
