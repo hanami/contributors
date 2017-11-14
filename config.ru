@@ -1,5 +1,6 @@
 require './config/environment'
-require 'sidekiq/web'
+
+Rack::Webconsole.inject_jquery = true
 
 require 'sidekiq/web'
 map '/sidekiq' do

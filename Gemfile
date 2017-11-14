@@ -38,6 +38,8 @@ group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun'
+  gem 'rack-webconsole'
+  gem 'multi_json'
 end
 
 group :test, :development do
