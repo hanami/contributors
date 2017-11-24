@@ -2,7 +2,7 @@ RSpec.describe AllCommits do
   let(:repo) { ProjectRepository.new }
   let(:contributor) { Contributor.new(id: 1, github: 'artofhuman') }
 
-  let!(:project) { repo.create(name: 'hanami') }
+  let!(:project) { repo.create(name: 'hanami', owner: 'hanami') }
 
   after do
     repo.clear

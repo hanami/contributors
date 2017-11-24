@@ -1,7 +1,7 @@
 require_relative '../../http_request'
 
 class AllCommits
-  API_URL = 'https://api.github.com/repos/hanami/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100&author=%{author}'.freeze
+  API_URL = 'https://api.github.com/repos/%{owner}/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100&author=%{author}'.freeze
 
   COMMITS_COUNT_ON_PAGE = 100
 
@@ -35,6 +35,7 @@ class AllCommits
 
   def get_response(project, contributors, page)
     params = {
+      owner: project.owner,
       project: project.name,
       author: contributors.github,
       page: page,

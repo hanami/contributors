@@ -2,8 +2,8 @@ RSpec.describe AllContributors do
   let(:repo) { ProjectRepository.new }
 
   before do
-    repo.create(name: 'contributors')
-    repo.create(name: 'utils')
+    repo.create(name: 'contributors', owner: 'hanami')
+    repo.create(name: 'utils', owner: 'hanami')
   end
 
   after do

@@ -4,6 +4,7 @@ module Graphql
       name "Project"
       field :id, types.ID
       field :name, types.String
+      field :owner, types.String
     end
   end
 end
