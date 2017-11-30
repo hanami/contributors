@@ -35,6 +35,9 @@ gem 'mock_redis'
 gem 'connection_pool'
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun'
