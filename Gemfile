@@ -34,11 +34,12 @@ gem 'hiredis'
 gem 'mock_redis'
 gem 'connection_pool'
 
-group :plugins do
-  gem 'hanami-reloader'
-end
-
+# group :plugins do
+#   gem 'hanami-reloader'
+# end
+#
 group :development do
+  gem 'guard-puma'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
