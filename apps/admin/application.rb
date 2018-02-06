@@ -261,6 +261,11 @@ module Admin
       controller.prepare do
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
+
+        use Rack::Auth::Basic, 'Admin' do |username, password|
+          username == ENV.fetch('ADMIN_USERNAME', 'hanami') &&
+            password == ENV.fetch('ADMIN_PASSWORD', 'hanami')
+        end
       end
 
       # Configure the code that will yield each time Admin::View is included
