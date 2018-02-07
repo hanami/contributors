@@ -9,7 +9,7 @@ module Web::Controllers::Contributors
       @contributor = ContributorRepository.new.find_by_github(params[:id])
       commits = CommitRepository.new.all_for_contributor(@contributor.id)
 
-      @commits_count = commits.to_a.size
+      @commits_count = commits.count
       @commits = all_for_page(commits)
     end
   end
