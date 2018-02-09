@@ -1,1 +1,11 @@
-p Here will be all projects!
+h2 All projects
+
+table.table.table-hover
+  tr
+    th Project name
+    th Since
+  - projects.each do |project|
+    tr
+      td = link_to_github(project)
+      td = project.created_at.strftime('%d %B %Y')
+

@@ -4,5 +4,7 @@ html
     title
       | Admin
     = favicon
+    = stylesheet 'bootstrap', 'main'
   body
-    = yield
+    .container
+      = yield
