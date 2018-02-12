@@ -7,4 +7,8 @@ html
     = stylesheet 'bootstrap', 'main'
   body
     .container
+      - if flash[:message]
+        .alert.alert-success
+          strong= flash[:message]
+
       = yield
