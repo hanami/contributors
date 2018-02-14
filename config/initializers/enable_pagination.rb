@@ -1,1 +1,0 @@
-CommitRepository.enable_pagination!
