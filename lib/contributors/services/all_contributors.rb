@@ -1,7 +1,7 @@
 require_relative '../../http_request'
 
 class AllContributors
-  API_URL = 'https://api.github.com/repos/hanami/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100'.freeze
+  API_URL = 'https://api.github.com/repos/%{owner}/%{project}/commits?client_id=%{github_id}&client_secret=%{github_key}&page=%{page}&count=100'.freeze
 
   def call
     projects = ProjectRepository.new.all
@@ -24,7 +24,7 @@ class AllContributors
   private
 
   def contributor_data(data)
-    { 
+    {
       github: data['author']['login'],
       avatar_url: data['author']['avatar_url']
     }
@@ -33,6 +33,7 @@ class AllContributors
   def get_response(project, page)
     params = {
       page: page,
+      owner: project.owner,
       project: project.name,
       github_id: ENV['GITHUB_API_ID'],
       github_key: ENV['GITHUB_API_KEY']

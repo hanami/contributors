@@ -3,8 +3,8 @@ RSpec.describe AddNewCommits do
   let(:commit_repo) { CommitRepository.new }
   let(:project_repo) { ProjectRepository.new }
 
-  let!(:contributor) { contributor_repo.create(github: 'artofhuman') }
-  let!(:project) { project_repo.create(name: 'hanami') }
+  let!(:contributor) { contributor_repo.create(github: 'artofhuman', owner: 'hanami') }
+  let!(:project) { project_repo.create(name: 'hanami', owner: 'hanami') }
 
   after do
     commit_repo.clear

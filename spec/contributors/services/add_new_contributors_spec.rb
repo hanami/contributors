@@ -3,7 +3,7 @@ RSpec.describe AddNewContributors do
   let(:project_repo) { ProjectRepository.new}
 
   before do
-    project_repo.create(name: 'contributors')
+    project_repo.create(name: 'contributors', owner: 'hanami')
   end
 
   after do

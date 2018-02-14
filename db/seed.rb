@@ -1,25 +1,10 @@
 require_relative '../config/boot'
 
-PROJECTS = %w[
-  hanami.github.io
-  hanami
-  view
-  utils
-  validations
-  model
-  controller
-  router
-  assets
-  community
-  helpers
-  mailer
-  docs
-  ecosystem
-  contributors
-  cli
-]
+GITHUB_ORGANIZATION = "hamani".freeze
 
 repo = ProjectRepository.new
-PROJECTS.each { |name| repo.create(name: name) }
+AllProjects.new(GITHUB_ORGANIZATION).call.each do |project|
+  repo.create(project)
+end
 AddNewContributors.new.call
 AddNewCommits.new.call
