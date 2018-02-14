@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
+require_relative '../system/import'
 require_relative '../lib/contributors'
 require_relative '../apps/admin/application'
 require_relative '../apps/api/application'
