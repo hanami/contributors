@@ -15,6 +15,7 @@ gem 'wet-health_endpoint'
 gem 'pg'
 
 gem 'slim'
+gem 'jquery-hanami'
 gem 'hanami-bootstrap', '0.4'
 gem 'sass'
 
