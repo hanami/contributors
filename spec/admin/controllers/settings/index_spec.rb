@@ -28,10 +28,9 @@ RSpec.describe Admin::Controllers::Settings::Index, type: :action do
         end
 
         it 'returns all settings' do
-          settings = action.settings.to_a
+          settings = action.settings
 
-          expect(settings).to all(be_a(Setting))
-          expect(settings.count).to eq 1
+          expect(settings).to be_a(Setting)
         end
       end
     end
