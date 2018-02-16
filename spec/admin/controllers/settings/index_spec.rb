@@ -22,7 +22,7 @@ RSpec.describe Admin::Controllers::Settings::Index, type: :action do
 
         after { settings_repo.clear }
 
-        it { expect(action.settings).to be_a(Setting) }
+        it { expect(action.settings).to eq({title: 'Hanami'}) }
       end
     end
   end
