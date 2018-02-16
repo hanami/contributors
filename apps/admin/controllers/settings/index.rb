@@ -5,7 +5,7 @@ module Admin::Controllers::Settings
     expose :settings
 
     def call(params)
-      @settings = SettingRepository.new.for_display.first
+      @settings = SettingRepository.new.for_display
     end
   end
 end
