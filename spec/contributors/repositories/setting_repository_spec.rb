@@ -10,8 +10,7 @@ RSpec.describe SettingRepository do
     end
 
     context 'returns settings with columns to display' do
-      it { expect(repo.for_display).to be_a Setting }
-      it { expect(repo.for_display.to_hash).to eq ({title: 'Hanami'}) }
+      it { expect(repo.for_display).to eq({title: 'Hanami'}) }
     end
   end
 end
