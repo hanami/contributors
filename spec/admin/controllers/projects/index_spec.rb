@@ -1,11 +1,9 @@
 RSpec.describe Admin::Controllers::Projects::Index, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[] }
+  let(:project_repo) { ProjectRepository.new }
 
-  it 'is successful' do
-    response = action.call(params)
-    expect(response[0]).to eq 200
-  end
+  it { expect(action.call(params)).to be_success }
 
   describe 'expose' do
     describe '#projects' do
@@ -16,23 +14,17 @@ RSpec.describe Admin::Controllers::Projects::Index, type: :action do
       end
 
       context 'when db has some projects' do
-        let(:project_repo) { ProjectRepository.new }
-
         before do
           project_repo.create(name: 'contributors')
           action.call(params)
         end
 
-        after do
-          project_repo.clear
-        end
+        after { project_repo.clear }
 
-        it 'returns all projects' do
-          projects = action.projects.to_a
+        subject { action.projects }
 
-          expect(projects).to all(be_a(Project))
-          expect(projects.count).to eq 1
-        end
+        it { expect(subject).to all(be_a(Project)) }
+        it { expect(subject.count).to eq 1 }
       end
     end
   end

@@ -2,10 +2,9 @@ RSpec.describe Admin::Controllers::Settings::Index, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[] }
 
-  it 'is successful' do
-    response = action.call(params)
-    expect(response[0]).to eq 200
-  end
+  let(:settings_repo) { SettingRepository.new }
+
+  it { expect(action.call(params)).to be_success }
 
   describe 'expose' do
     describe '#settings' do
@@ -16,22 +15,14 @@ RSpec.describe Admin::Controllers::Settings::Index, type: :action do
       end
 
       context 'when db has settings' do
-        let(:settings_repo) { SettingRepository.new }
-
         before do
           settings_repo.create(title: 'Hanami')
           action.call(params)
         end
 
-        after do
-          settings_repo.clear
-        end
+        after { settings_repo.clear }
 
-        it 'returns all settings' do
-          settings = action.settings
-
-          expect(settings).to be_a(Setting)
-        end
+        it { expect(action.settings).to be_a(Setting) }
       end
     end
   end
