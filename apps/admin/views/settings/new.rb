@@ -3,7 +3,7 @@ module Admin::Views::Settings
     include Admin::View
 
     def form(settings)
-      form_for :setting, routes.create_settings_path do
+      form_for :setting, routes.settings_path, class: 'setting-form' do
         label :title
         text_field :title, value: settings.title
 
