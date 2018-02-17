@@ -4,7 +4,7 @@ module Web
       include Web::Layout
 
       def title
-        'Hanami contributors'
+        settings && settings[:title]
       end
 
       def all_time_page_class
@@ -29,6 +29,12 @@ module Web
 
       def faq_page_class
         nil
+      end
+
+      private
+
+      def settings
+        @settings ||= SettingRepository.new.for_display
       end
     end
   end
