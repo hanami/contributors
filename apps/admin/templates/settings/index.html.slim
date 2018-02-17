@@ -1,0 +1,10 @@
+h2 Settings
+
+table.table.table-hover
+  tr
+    th Name
+    th Value
+  - settings.to_hash.each do |key, value|
+    tr
+      td = key
+      td = value
