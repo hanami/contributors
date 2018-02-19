@@ -1,11 +1,12 @@
-h2 Settings
+h2 Setting History
 
 table.table.table-hover
   tr
-    th Name
-    th Value
-  tr
-    td Title
-    td = settings.title
+    th Title
+    th Changed at
+  - setting_history.each do |setting|
+    tr
+      td = setting.title
+      td = setting.created_at
 
 .new-settings = link_to 'New Settings', routes.new_setting_path
