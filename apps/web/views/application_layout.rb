@@ -34,7 +34,7 @@ module Web
       private
 
       def settings
-        @settings ||= SettingRepository.new.for_display
+        @settings ||= SettingRepository.new.latest
       end
     end
   end
