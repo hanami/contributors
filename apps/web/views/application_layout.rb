@@ -4,7 +4,7 @@ module Web
       include Web::Layout
 
       def title
-        settings && settings[:title]
+        settings.title
       end
 
       def all_time_page_class
@@ -34,7 +34,7 @@ module Web
       private
 
       def settings
-        @settings ||= SettingRepository.new.for_display
+        @settings ||= SettingRepository.new.latest
       end
     end
   end

@@ -1,6 +1,15 @@
 class SettingRepository < Hanami::Repository
+  def history
+    settings
+      .order{ created_at.desc }
+      .map_to(Setting)
+      .to_a
+  end
 
-  def for_display
-    settings.select(:title).last
+  def latest
+    settings
+      .order{ created_at.desc }
+      .limit(1).map_to(Setting)
+      .one || Setting.new
   end
 end

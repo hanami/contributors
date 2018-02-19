@@ -5,16 +5,10 @@ module Admin::Views::Settings
     def form(settings)
       form_for :setting, routes.settings_path, class: 'setting-form' do
         label :title
-        text_field :title, value: extract(settings, :title)
+        text_field :title, value: settings.title
 
         submit 'Create'
       end
-    end
-
-    private
-
-    def extract(settings, value)
-      settings && settings.fetch(value) { nil }
     end
   end
 end
