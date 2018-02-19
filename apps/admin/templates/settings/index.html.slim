@@ -4,9 +4,8 @@ table.table.table-hover
   tr
     th Name
     th Value
-  - settings.to_hash.each do |key, value|
-    tr
-      td = key
-      td = value
+  tr
+    td Title
+    td = settings.title
 
 .new-settings = link_to 'New Settings', routes.new_setting_path

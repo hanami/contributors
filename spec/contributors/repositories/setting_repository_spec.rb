@@ -4,13 +4,22 @@ RSpec.describe SettingRepository do
   after { repo.clear }
 
   describe '#for_display' do
+    context 'when settings exist in db' do
+      before { repo.create(title: 'Hanami') }
 
-    before do
-      repo.create(title: 'Hanami')
+      it { expect(repo.for_display).to be_a Setting }
+      it { expect(repo.for_display.title).to eq 'Hanami' }
+
+      context 'and settings more than one' do
+        before { repo.create(title: 'Hanami latest') }
+
+        it { expect(repo.for_display.title).to eq 'Hanami latest' }
+      end
     end
 
-    context 'returns settings with columns to display' do
-      it { expect(repo.for_display).to eq({title: 'Hanami'}) }
+    context 'when settings exist in db' do
+      it { expect(repo.for_display).to be_a Setting }
+      it { expect(repo.for_display.title).to eq nil }
     end
   end
 end

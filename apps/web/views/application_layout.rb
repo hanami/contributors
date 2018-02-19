@@ -4,7 +4,7 @@ module Web
       include Web::Layout
 
       def title
-        settings && settings[:title]
+        settings.title
       end
 
       def all_time_page_class
