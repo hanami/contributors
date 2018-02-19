@@ -2,10 +2,10 @@ module Admin::Controllers::Settings
   class Index
     include Admin::Action
 
-    expose :settings
+    expose :setting_history
 
     def call(params)
-      @settings = SettingRepository.new.latest
+      @setting_history = SettingRepository.new.history
     end
   end
 end
