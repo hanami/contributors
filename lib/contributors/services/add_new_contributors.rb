@@ -10,6 +10,17 @@ class AddNewContributors
     repo.create(new_contributors)
   end
 
+  def for_project(project)
+    contributors = repo.all
+    new_contributors = AllContributors.new.for_project(project)
+
+    new_contributors = new_contributors.select do |contributor|
+      !contributors.any? { |c| c.github == contributor[:github] }
+    end
+
+    repo.create(new_contributors)
+  end
+
   private
 
   def repo
