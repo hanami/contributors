@@ -24,4 +24,18 @@ RSpec.describe AddNewCommits do
       expect(contributor_repo.last.since).to be
     end
   end
+
+  it 'adds contributor commits to the repo for given project' do
+    VCR.use_cassette("commits") do
+      described_class.new.for_project(project)
+
+      commits = commit_repo.all_for_contributor(contributor.id).to_a
+
+      expect(commits).not_to be_empty
+      expect(commits.first.url).to be
+      expect(commits.first.title).to be
+      expect(commits.first.project_id).to eq(project.id)
+      expect(contributor_repo.last.since).to be
+    end
+  end
 end
