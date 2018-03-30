@@ -4,8 +4,8 @@ ruby '2.4.2'
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '~> 1.1'
-gem 'hanami-model', '~> 1.1'
+gem 'hanami',       '1.2.0.rc1'
+gem 'hanami-model', '1.2.0.rc1'
 
 gem 'dry-struct'
 
@@ -40,8 +40,7 @@ gem 'connection_pool'
 #
 group :development do
   gem 'guard-puma'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'hanami-webconsole'
 end
 
 group :test, :development do
