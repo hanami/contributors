@@ -9,10 +9,13 @@ describe Admin::Controllers::Projects::Create do
     repository.clear
   end
 
-  it 'creates a new project' do
-    action.call(params)
-    project = repository.last
+  it 'creates a new project and spawn background jobs' do
 
+    expect {
+      action.call(params)
+    }.to change(AddNewContributorsForProjectWorker.jobs, :size).by(1)
+
+    project = repository.last
     expect(project.id).not_to be_nil
     expect(project.name).to eq(params.dig(:project, :name))
   end
