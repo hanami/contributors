@@ -7,8 +7,6 @@ gem 'rake'
 gem 'hanami',       '~> 1.2'
 gem 'hanami-model', '~> 1.2'
 
-gem 'dry-struct'
-
 # healthcheck
 gem 'wet-health_endpoint'
 
