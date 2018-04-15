@@ -291,7 +291,6 @@ DEPENDENCIES
   capybara
   connection_pool
   dotenv (~> 2.0)
-  dry-struct
   dry-system
   graphql
   guard-puma
