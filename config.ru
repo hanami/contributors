@@ -6,7 +6,6 @@ if defined?(BetterErrors)
   BetterErrors.application_root = __dir__
 end
 
-require 'sidekiq/web'
 map '/sidekiq' do
   use Rack::Auth::Basic, "Protected Area" do |username, password|
     # Protect against timing attacks:
