@@ -19,7 +19,7 @@ gem 'sass'
 gem 'hanami-pagination', git: 'https://github.com/jodosha/hanami-pagination.git', branch: 'fix/hanami-repository-superclass'
 
 # api
-gem 'hanami-serializer', github: 'davydovanton/hanami-serializer'
+gem 'hanami-serializer', github: 'davydovanton/hanami-serializer', ref: '321192cb8408992828f9b325ec8e499f2e2fb505'
 gem 'graphql'
 
 gem 'sidekiq'
