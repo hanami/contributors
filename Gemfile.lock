@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/davydovanton/hanami-serializer.git
+  remote: https://github.com/davydovanton/hanami-serializer.git
   revision: 321192cb8408992828f9b325ec8e499f2e2fb505
   ref: 321192cb8408992828f9b325ec8e499f2e2fb505
   specs:
@@ -328,4 +328,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.3
+   2.0.2
