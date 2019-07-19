@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.6.3'
 
 gem 'puma'
 
 gem 'rake'
-gem 'hanami',       '~> 1.2'
-gem 'hanami-model', '~> 1.2'
+gem 'hanami',       '~> 1.3'
+gem 'hanami-model', '~> 1.3'
 
 # healthcheck
 gem 'wet-health_endpoint'
