@@ -16,7 +16,6 @@ PROJECTS = %w[
   docs
   ecosystem
   contributors
-  cli
 ]
 
 repo = ProjectRepository.new
