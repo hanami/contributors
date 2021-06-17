@@ -8,4 +8,9 @@ html
   body
     .container
       = render partial: 'shared/navbar'
+
+      - if flash[:message]
+        .alert.alert-success
+          strong= flash[:message]
+
       = yield
