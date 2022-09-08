@@ -52,6 +52,7 @@ GitHub Actions daily job that:
 
 - Make
 - Go 1.18+ (only for `import.go`)
+  - `musl-cross` (`brew install FiloSottile/musl-cross/musl-cross`)
 
 ### Setup
 
