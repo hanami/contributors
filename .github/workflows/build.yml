@@ -18,11 +18,6 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v6
 
-      - name: Set Git Tag name
-        id: date
-        run: |
-          echo "{tag_name}=v{$(date +'%Y-%m-%d')}" >> $GITHUB_ENV
-
       - name: checkout repo content
         uses: actions/checkout@v3 # checkout the repository content to github runner
 
@@ -35,12 +30,11 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           ref: '${{ steps.branch-name.outputs.current_branch }}'
-          commit_message: '${{ env.tag_name }}'
-          tagging_message: '${{ env.tag_name }}'
+          commit_message: 'Build website'
 
           commit_user_name: GitHub Actions
           commit_author:
-            Author <actions@github.com> # defaults to author of the commit that triggered the run
+            GitHub Actions <actions@github.com> # defaults to author of the commit that triggered the run
 
 
             # See https://git-scm.com/docs/git-add#_options
