@@ -33,19 +33,23 @@ jobs:
 
       - name: commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            ref: '${{ steps.branch-name.outputs.current_branch }}'
-            commit_message: '${{ env.tag_name }}'
-            tagging_message: '${{ env.tag_name }}'
+        with:
+          ref: '${{ steps.branch-name.outputs.current_branch }}'
+          commit_message: '${{ env.tag_name }}'
+          tagging_message: '${{ env.tag_name }}'
 
-            commit_user_name: GitHub Actions
-            commit_author: Author <actions@github.com> # defaults to author of the commit that triggered the run
+          commit_user_name: GitHub Actions
+          commit_author:
+            Author <actions@github.com> # defaults to author of the commit that triggered the run
+
 
             # See https://git-scm.com/docs/git-add#_options
-            add_options: '-u'
+          add_options:
+            '-u'
 
             # See https://git-scm.com/docs/git-push#_options
-            push_options: '--force'
+          push_options:
+            '--force'
 
             # Optional. Create given branch name in local and remote repository.
-            create_branch: true
+          create_branch: true
