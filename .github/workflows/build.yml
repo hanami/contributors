@@ -1,0 +1,38 @@
+on:
+  push:
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'import.go'
+      - 'db/schema.sql'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Git Tag name
+        id: date
+        run: |
+          echo "{tag_name}=v{$(date +'%Y-%m-%d')}" >> $GITHUB_ENV
+
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content to github runner
+
+      - name: import contributions
+        run: make import
+
+      # - name: commit & push changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: GitHub Action
+      #     author_email: action@github.com
+      #     committer_name: GitHub Action
+      #     committer_email: action@github.com
+      #     message: '${{ env.tag_name }}'
+      #     push: true
+      #     tag: '${{ env.tag_name }} --force'
+      #     tag_push: '--force'
