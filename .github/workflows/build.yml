@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v3 # checkout the repository content to github runner
 
       - name: import contributions
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: make import
 
       # - name: commit & push changes
