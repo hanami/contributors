@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS commits (
          ON UPDATE NO ACTION
 );
 
-CREATE UNIQUE INDEX index_commits_repository_sha
+CREATE UNIQUE INDEX IF NOT EXISTS index_commits_repository_sha
 ON commits (repository_id, sha);
 
-CREATE INDEX index_commits_date
+CREATE INDEX IF NOT EXISTS index_commits_date
 ON commits (date);
