@@ -32,11 +32,20 @@ jobs:
         run: make import
 
       - name: commit & push changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: GitHub Action
-          author_email: action@github.com
-          committer_name: GitHub Action
-          committer_email: action@github.com
-          message: '${{ env.tag_name }}'
-          push: origin HEAD:${{ steps.branch-name.outputs.current_branch }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+          with:
+            ref: '${{ steps.branch-name.outputs.current_branch }}'
+            commit_message: '${{ env.tag_name }}'
+            tagging_message: '${{ env.tag_name }}'
+
+            commit_user_name: GitHub Actions
+            commit_author: Author <actions@github.com> # defaults to author of the commit that triggered the run
+
+            # See https://git-scm.com/docs/git-add#_options
+            add_options: '-u'
+
+            # See https://git-scm.com/docs/git-push#_options
+            push_options: '--force'
+
+            # Optional. Create given branch name in local and remote repository.
+            create_branch: true
