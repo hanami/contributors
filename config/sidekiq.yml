@@ -1,5 +1,0 @@
-:schedule:
-  AddNewCommitsWorker:
-    every: 4h
-  AddNewContributorsWorker:
-    every: 6h
