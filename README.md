@@ -1,9 +1,18 @@
-# Hanami contributors
+# Hanami Contributors
 
-Display all hanami contributors on the one page.
+Display all Hanami contributors on the one page.
+
+## How it works
+
+GitHub Actions daily job that:
+
+1. fetches the contributions data from GitHub and stores it in a local SQLite database (`db/production.db`)
+2. rebuilds the website
 
 ## JSON API
+
 ### `GET /api/contributors`
+
 ```
 {
   "count": Integer,
@@ -19,6 +28,7 @@ Display all hanami contributors on the one page.
 ```
 
 ### `GET /api/contributors/:github`
+
 ```
 {
   "status": "ok",
@@ -37,35 +47,37 @@ Display all hanami contributors on the one page.
 ```
 
 ## Development
-### First
-Copy .env files
-```
-cp .env.development.sample .env.development && cp .env.test.sample .env.test
+
+### Prerequisites
+
+- Make
+- Go 1.18+ (only for `import.go`)
+  - `musl-cross` (`brew install FiloSottile/musl-cross/musl-cross`)
+
+### Setup
+
+Generate a [new GitHub Token](https://github.com/settings/tokens/new) (no `scope` is required).
+
+```shell
+⚡make dev
+⚡nvim .envrc # add your GitHub Token
 ```
 
-### Second
-Create GitHub keys for data aggregation. You can do it [here](https://github.com/settings/applications/new).
+### Import
 
-After that you need to set `GITHUB_API_ID` (Client ID) and `GITHUB_API_KEY` (Client Secret) env variables in `# in .env.development` file:
+`import.go` imports all the repositories, commits, and commit authors from Hanami GitHub organization and stores them into `db/production.db`
 
-```
-# in .env.development
-GITHUB_API_ID="<id>"
-GITHUB_API_KEY="<key>"
-```
+To run the import logic locally:
 
-### Third
-You need to create db table and call all migrations, for this run this commands
-```
-bundle exec hanami db prepare
+```shell
+⚡make run
 ```
 
-After that, you need to call data aggregation. For this just call `db/seed.rb` file:
-```
-bundle exec ruby db/seed.rb
-```
+To build the import logic for GitHub Actions:
 
-**Attention:** this code may be work around 1h (on my local machine). Be sure that you have this time before the start.
+```shell
+⚡make build
+```
 
 ## License
 
