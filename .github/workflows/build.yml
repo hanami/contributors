@@ -14,6 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v6
+
       - name: Set Git Tag name
         id: date
         run: |
@@ -35,4 +39,4 @@ jobs:
           committer_name: GitHub Action
           committer_email: action@github.com
           message: '${{ env.tag_name }}'
-          push: origin HEAD:${{ github.head_ref }}
+          push: origin HEAD:${{ steps.branch-name.outputs.current_branch }}
