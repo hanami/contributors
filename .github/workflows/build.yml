@@ -35,4 +35,4 @@ jobs:
           committer_name: GitHub Action
           committer_email: action@github.com
           message: '${{ env.tag_name }}'
-          push: true
+          push: origin HEAD:${{ github.head_ref }}
