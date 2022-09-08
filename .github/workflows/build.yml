@@ -2,7 +2,7 @@ on:
   push:
     paths:
       - '.github/workflows/ci.yml'
-      - 'import.go'
+      - 'bin/import'
       - 'db/schema.sql'
   pull_request:
     branches:
@@ -27,14 +27,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: make import
 
-      # - name: commit & push changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: GitHub Action
-      #     author_email: action@github.com
-      #     committer_name: GitHub Action
-      #     committer_email: action@github.com
-      #     message: '${{ env.tag_name }}'
-      #     push: true
-      #     tag: '${{ env.tag_name }} --force'
-      #     tag_push: '--force'
+      - name: commit & push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Action
+          author_email: action@github.com
+          committer_name: GitHub Action
+          committer_email: action@github.com
+          message: '${{ env.tag_name }}'
+          push: true
