@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Repository {
+  id     Int      @id @default(autoincrement())
+  name   String   @unique(map: "sqlite_autoindex_repositories_1")
+  Commit Commit[]
+
+  @@map("repositories")
+}
+
+model Contributor {
+  id           Int      @id @default(autoincrement())
+  login        String   @unique(map: "sqlite_autoindex_contributors_1")
+  fullName     String?  @map("full_name")
+  since        String?
+  commitsCount Int      @default(0) @map("commits_count")
+  Commit       Commit[]
+
+  @@index([commitsCount], map: "index_contributors_commits_count")
+  @@index([since], map: "index_contributors_since")
+  @@map("contributors")
+}
+
+model Commit {
+  id            Int          @id @default(autoincrement())
+  repositoryId  Int?         @map("repository_id")
+  contributorId Int?         @map("contributor_id")
+  sha           String
+  url           String
+  message       String
+  committedAt   String       @map("committed_at")
+  createdAt     DateTime     @default(dbgenerated("datetime('now', 'utc')")) @map("created_at")
+  contributor   Contributor? @relation(fields: [contributorId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  repository    Repository?  @relation(fields: [repositoryId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([repositoryId, sha], map: "index_commits_repository_sha")
+  @@index([committedAt], map: "index_commits_committed_at")
+  @@map("commits")
+}

@@ -15,6 +15,11 @@ import (
 	"golang.org/x/oauth2"
 )
 
+const (
+	// YYYYMMDD date format
+	YYYYMMDD = "2006-01-02"
+)
+
 func main() {
 	daily := flag.Bool("daily", false, "fetch only commits for the latest 24/48hrs")
 
@@ -56,6 +61,11 @@ func main() {
 	}
 
 	err = refreshContributorsSinceDate(db)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = refreshContributorsCommitsCount(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -228,24 +238,24 @@ func upsertCommit(db *sql.DB, repositoryID int64, contributorID int64, repositor
 	if err != nil {
 		return err
 	}
-	stmt, err := tx.Prepare("INSERT INTO commits(id, repository_id, contributor_id, sha, url, message, date) VALUES(NULL, ?, ?, ?, ?, ?, ?) ON CONFLICT(repository_id, sha) DO NOTHING")
+	stmt, err := tx.Prepare("INSERT INTO commits(id, repository_id, contributor_id, sha, url, message, committed_at) VALUES(NULL, ?, ?, ?, ?, ?, ?) ON CONFLICT(repository_id, sha) DO NOTHING")
 	if err != nil {
 		return err
 	}
 	defer stmt.Close()
 
 	commit := repositoryCommit.Commit
-	var date *time.Time
+	var committedAt *time.Time
 
 	if commit.Author != nil {
-		date = commit.Author.Date
+		committedAt = commit.Author.Date
 	} else {
-		date = commit.Committer.Date
+		committedAt = commit.Committer.Date
 	}
 
 	// fmt.Printf("%#v \n", commit)
 
-	_, err = stmt.Exec(repositoryID, contributorID, repositoryCommit.SHA, repositoryCommit.HTMLURL, commit.Message, date)
+	_, err = stmt.Exec(repositoryID, contributorID, repositoryCommit.SHA, repositoryCommit.HTMLURL, commit.Message, committedAt.Format(YYYYMMDD))
 	if err != nil {
 		return err
 	}
@@ -263,7 +273,30 @@ func refreshContributorsSinceDate(db *sql.DB) error {
 	if err != nil {
 		return err
 	}
-	stmt, err := tx.Prepare("UPDATE contributors SET since = (SELECT MIN(date) FROM commits WHERE contributor_id = contributors.id)")
+	stmt, err := tx.Prepare("UPDATE contributors SET since = (SELECT MIN(committed_at) FROM commits WHERE contributor_id = contributors.id)")
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec()
+	if err != nil {
+		return err
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func refreshContributorsCommitsCount(db *sql.DB) error {
+	tx, err := db.Begin()
+	if err != nil {
+		return err
+	}
+	stmt, err := tx.Prepare("UPDATE contributors SET commits_count = (SELECT COUNT(id) FROM commits WHERE contributor_id = contributors.id)")
 	if err != nil {
 		return err
 	}

@@ -53,13 +53,15 @@ GitHub Actions daily job that:
 - Make
 - Go 1.18+ (only for `import.go`)
   - `musl-cross` (`brew install FiloSottile/musl-cross/musl-cross`)
+- Node.js 12.20+
+- Yarn
 
 ### Setup
 
 Generate a [new GitHub Token](https://github.com/settings/tokens/new) (no `scope` is required).
 
 ```shell
-⚡make dev
+⚡make setup
 ⚡nvim .envrc # add your GitHub Token
 ```
 
@@ -78,6 +80,20 @@ To build the import logic for GitHub Actions:
 ```shell
 ⚡make build
 ```
+
+### Website
+
+To run it locally:
+
+```shell
+⚡make dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Credits
+
+Next.js + Tailwind template based on: [https://github.com/ixartz/Next-js-Boilerplate](https://github.com/ixartz/Next-js-Boilerplate)
 
 ## License
 
