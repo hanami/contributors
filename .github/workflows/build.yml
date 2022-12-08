@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - '.github/workflows/ci.yml'
+      - '.github/workflows/build.yml'
       - 'bin/import'
       - 'db/schema.sql'
   pull_request:
