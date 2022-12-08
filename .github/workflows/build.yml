@@ -29,7 +29,7 @@ jobs:
       - name: commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          ref: '${{ steps.branch-name.outputs.current_branch }}'
+          branch: '${{ steps.branch-name.outputs.current_branch }}'
           commit_message: 'Build website'
 
           commit_user_name: GitHub Actions
