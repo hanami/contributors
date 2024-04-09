@@ -20,6 +20,15 @@ RSpec.describe AddNewContributors do
     expect(contributors_repo.find_by_github('davydovanton')).to be
   end
 
+  it 'adds new contributors in given project to repo' do
+    VCR.use_cassette("contributors") do
+      described_class.new.for_project(project_repo.first)
+    end
+
+    expect(contributors_repo.find_by_github('jodosha')).to be
+    expect(contributors_repo.find_by_github('davydovanton')).to be
+  end
+
   context 'when contributor already in repo' do
     before do
       contributors_repo.create(github: 'davydovanton')

@@ -21,10 +21,25 @@ class AllContributors
     contributors.uniq! { |c| c[:github] }
   end
 
+  def for_project(project)
+    contributors = []
+
+    page = 1
+    while (project_commits = get_response(project, page)) && !project_commits.empty?
+      page += 1
+      project_commits.each do |data|
+        next unless data['author']
+        contributors << contributor_data(data)
+      end
+    end
+
+    contributors.uniq! { |c| c[:github] }
+  end
+
   private
 
   def contributor_data(data)
-    { 
+    {
       github: data['author']['login'],
       avatar_url: data['author']['avatar_url']
     }

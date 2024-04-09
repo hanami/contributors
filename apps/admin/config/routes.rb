@@ -3,5 +3,6 @@
 #
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
-get '/', to: 'projects#index', as: :projects
+root to: 'projects#index'
+resources :projects, only: [:index, :new, :create]
 resources :settings, only: [:index, :new, :create]

@@ -1,0 +1,15 @@
+h2 Add project
+
+- unless params.valid?
+  .alert.alert-danger
+    strong There was a problem with your submission
+    ul
+      - params.error_messages.each do |message|
+        li= message
+
+= form_for :project, routes.projects_path do
+  - div class: 'form-group' do
+    - label :name
+    - text_field :name, class: 'form-control', placeholder: 'Project name'
+
+  - submit 'Create', class: 'btn btn-primary'

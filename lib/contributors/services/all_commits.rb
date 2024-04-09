@@ -20,6 +20,18 @@ class AllCommits
     commits
   end
 
+  def for_project(project, contributor)
+    commits = []
+
+    page = 1
+    while (project_commits = get_response(project, contributor, page)) && !project_commits.empty?
+      page += 1
+      project_commits.each { |data| commits << commit_information(contributor, project, data) }
+    end
+
+    commits
+  end
+
   private
 
     def commit_information(contributor, project, data)

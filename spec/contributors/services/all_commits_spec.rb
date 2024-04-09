@@ -23,4 +23,20 @@ RSpec.describe AllCommits do
       expect(commit[:url]).to be
     end
   end
+
+  it 'returns contributor commits for given project' do
+    VCR.use_cassette("commits") do
+      result = AllCommits.new.for_project(project, contributor)
+
+      expect(result).not_to be_empty
+
+      commit = result.first
+
+      expect(commit[:contributor_id]).to eq(contributor.id)
+      expect(commit[:project_id]).to eq(project.id)
+      expect(commit[:created_at]).to be_a(Time)
+      expect(commit[:sha]).to be
+      expect(commit[:url]).to be
+    end
+  end
 end

@@ -22,6 +22,9 @@ Application.stub(:redis, ConnectionPool.new(size: 10, timeout: 3) {
   MockRedis.new
 })
 
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 VCR.configure do |c|
   c.hook_into :webmock
   c.cassette_library_dir = 'spec/cassettes'
